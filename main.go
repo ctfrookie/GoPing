@@ -6,6 +6,7 @@ import (
 	"net"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -361,8 +362,10 @@ func pingIP(ip string, timeoutMs int) PingResult {
 		return PingResult{IP: ip, Alive: false}
 	}
 
-	// 在Windows上需要管理员权限
-	pinger.SetPrivileged(true)
+	// 仅在 Windows 上启用特权模式
+	if runtime.GOOS == "windows" {
+		pinger.SetPrivileged(true)
+	}
 
 	pinger.Count = 1
 	pinger.Timeout = time.Duration(timeoutMs) * time.Millisecond
