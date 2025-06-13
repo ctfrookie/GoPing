@@ -1,0 +1,26 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output directory
+bin/
+
+# Go workspace file
+go.work
+
+# Debug files
+*.log
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Local environment files
+.env
+.env.local
